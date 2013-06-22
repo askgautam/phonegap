@@ -1,0 +1,7 @@
+<widget>
+   <preference name="MySetting" value="true" />
+   <plugins>
+      <plugin name="MyPlugin" value="MyPluginClass" />
+   </plugins>
+   <access origin="*" />
+</widget>
