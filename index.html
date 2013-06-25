@@ -59,7 +59,7 @@
     
     // Declare global variables
 var state = 0; // 0 record, 1 stop, 2 playback   
-var src = "recording.wav"; // name of audio file
+var src = "recording.amr"; // name of audio file
 var mediaRec; // the object for recording and play sound
 var directory; // holds a reference for directory reading
  
@@ -97,10 +97,12 @@ function startRecording() {
   // Success callback
   function() {
     console.log("mediaRec -> success");
+    document.getElementById("btnSound").value = "recording";
   },
   // Error callback
   function(err) {
     console.log("mediaRec -> error: "+ err.code);
+    document.getElementById("btnSound").value = "error recording";
   });
   // Record audio
   mediaRec.startRecord();
@@ -109,11 +111,13 @@ function startRecording() {
 function stopRecording() {
    console.log("stopRecording()");
    mediaRec.stopRecord();
+   document.getElementById("btnSound").value = "start recording";
 }
  
 function playRecording() {
   console.log("playRecording()");
   mediaRec.play();
+  document.getElementById("btnSound").value = "playing";
 }
  
 function onFileSytemSuccess(fileSystem) {
@@ -160,6 +164,6 @@ function onError(error) {
   <body>
     <p id="media">Recording audio...</p>
     <p id="audio_position"></p>
-    <button onclick="onClick();">click to record (play/stop)</button>
+    <button id="btnSound" onclick="onClick();">click to record (play/stop)</button>
   </body>
 </html>
